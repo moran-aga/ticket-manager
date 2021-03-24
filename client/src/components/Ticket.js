@@ -2,9 +2,10 @@ import React from 'react';
 import Labels from './Labels';
 
 function Ticket({ tickets }) {
+    console.log(tickets);
     return (
         <>
-            {tickets.map(ticket => {
+            {tickets&&tickets.map(ticket => {
                 return <div className = "ticket">
                     <div className="ticket-title">{ticket.title}</div>        
                     <div className = "ticket-content">{ticket.content}</div>        
