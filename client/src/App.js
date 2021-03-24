@@ -9,12 +9,12 @@ function App() {
 
   const getTickets = async (searchWord) => {
     if(searchWord === undefined){
-      const { data } = await axios.get('api/tickets');
-      setTickets(data.DbTickets);
+      const { data } = await axios.get('/api/tickets');
+      setTickets(data);
       return;
     }
     const { data } = await axios.get(`/api/tickets?searchText=${searchWord}`);
-    setTickets(data.DbTickets);
+    setTickets(data);
   };
 
   useEffect(() => {
