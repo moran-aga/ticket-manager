@@ -6,8 +6,13 @@ import { useEffect, useState } from "react";
 function App() {
   const [tickets, setTickets] = useState([]);
 
-  const getTickets = async () => {
-    const { data } = await axios.get('api/tickets');
+  const getTickets = async (searchWord) => {
+    if(searchWord === undefined){
+      const { data } = await axios.get('api/tickets');
+      setTickets(data.DbTickets);
+      return;
+    }
+    const { data } = await axios.get(`/api/tickets?searchText=${searchWord}`);
     setTickets(data.DbTickets);
   };
 
@@ -18,6 +23,7 @@ function App() {
 
   return (
     <div className = "container">
+      <input type ="text" onChange = {e => getTickets(e.target.value)} />
       <Ticket tickets = {tickets}/>
     </div>
   );
