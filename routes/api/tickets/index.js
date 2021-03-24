@@ -14,4 +14,12 @@ tickets.get("/", (req, res) => {
   });
 });
 
+tickets.patch('/:ticketId', (req, res) => {
+    const { ticketId } = req.params;
+    Ticket.findOneAndUpdate({ _id: ticketId },  { done: true }, {new: true})
+    .then(result => {
+        res.status(200).json({updated: true});
+    })
+})
+
 module.exports = tickets;
