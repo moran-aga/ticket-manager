@@ -7,10 +7,10 @@ tickets.get("/", (req, res) => {
  const {searchText} = req.query;
  Ticket.find({ title: new RegExp(searchText, 'i') })
   .then(DbTickets => {
-      res.status(200).json({ DbTickets });
+      res.status(200).json(DbTickets);
   })
   .catch(err => {
-      res.status(500).json({ error: err.message});
+      res.status(500).json({ error: err.message });
   });
 });
 
