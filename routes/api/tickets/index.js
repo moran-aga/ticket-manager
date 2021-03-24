@@ -7,7 +7,7 @@ tickets.get("/", (req, res) => {
  const {searchText} = req.query;
  Ticket.find({ title: new RegExp(searchText, 'i') })
   .then(DbTickets => {
-   res.json({ DbTickets });
+      res.json({ DbTickets });
   })
   .catch(err => {
       res.status(500).json({ error: err.message});
