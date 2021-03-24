@@ -16,10 +16,15 @@ tickets.get("/", (req, res) => {
 
 tickets.patch('/:ticketId', (req, res) => {
     const { ticketId } = req.params;
-    Ticket.findOneAndUpdate({ _id: ticketId },  { done: true }, {new: true})
+    Ticket.findOne({ _id: ticketId })
     .then(result => {
-        res.status(200).json({updated: true});
+        const done = result.done;
+        result.updateOne({ done: !done })
+        .then(_ => {
+            res.status(200).json({updated: true});
+        })
     })
+    .catch(err => res.status(500).json({error: err.message}))
 })
 
 module.exports = tickets;
