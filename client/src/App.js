@@ -1,5 +1,6 @@
 import "./App.css";
 import Ticket from './components/Ticket';
+import SearchInput from './components/SearchInput';
 import axios from 'axios';
 import { useEffect, useState } from "react";
 
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <div className = "container">
-      <input type ="text" onChange = {e => getTickets(e.target.value)} />
+      <SearchInput getTickets = {getTickets}/>
       <Ticket tickets = {tickets}/>
     </div>
   );
