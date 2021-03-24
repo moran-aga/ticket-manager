@@ -2,26 +2,16 @@ const { Router } = require("express");
 const tickets = Router();
 const Ticket = require("../../../models/ticket");
 
-//get all tickets
+// If there is a searchText query, it will get the matching, if not it gets all tickets
 tickets.get("/", (req, res) => {
- Ticket.find({})
-  .then((DBtickets) => {
-   res.json({ DBtickets });
+ const {searchText} = req.query;
+ Ticket.find({ title: new RegExp(searchText, 'i') })
+  .then(DbTickets => {
+   res.json({ DbTickets });
   })
-  .catch((err) => {
-   res.json({ error: err.message });
+  .catch(err => {
+      res.status(500).json({ error: err.message});
   });
-});
-
-//get ticket with search params
-tickets.get("/", (req, res) => {
- const query = req.query.searchText;
- const regex = new RegExp(query);
- Ticket.find({ title: { $regex: regex, $options: "i" } })
-  .then((titles) => {
-   res.json({ titles });
-  })
-  .catch();
 });
 
 module.exports = tickets;
