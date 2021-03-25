@@ -4,6 +4,7 @@ import SearchInput from './components/SearchInput';
 import Counter from './components/Counter';
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import RestoreButton from "./components/RestoreButton";
 
 function App() {
   const [tickets, setTickets] = useState([]);
@@ -33,10 +34,18 @@ function App() {
       console.log("ERROR" + e);
     }
   }
-  
+
   const getHiddenTickets = (data) => {
     const temp = data.filter(ticket => ticket.done);
     setHiddenTickets(temp);
+  }
+
+  const restoreOnClick = () => {
+    const restoredList = tickets.map(async (ticket) => {
+      ticket.done = false;
+      return ticket;
+    });
+    setTickets(restoredList);
   }
 
   useEffect(() => {
@@ -45,9 +54,10 @@ function App() {
 
   return (
     <div className = "container">
-      <SearchInput getTickets = {getTickets}/>
+      <SearchInput getTickets = {getTickets} />
+      <RestoreButton onClick = {restoreOnClick} />
       <Counter hiddenTickets = {hiddenTickets} />
-      <Ticket tickets = {tickets} hideOnClick = {hideOnClick}/>
+      <Ticket tickets = {tickets} hideOnClick = {hideOnClick} />
     </div>
   );
 }
