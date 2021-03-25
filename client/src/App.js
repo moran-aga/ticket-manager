@@ -17,6 +17,16 @@ function App() {
     setTickets(data);
   };
 
+  const hideOnClick = async (e) => {
+      const ticketTime = e.target.parentElement.parentElement.children[3].innerText;
+      const ticketIndex = tickets.findIndex(ticket => ticket.creationTime === Number(ticketTime));
+      await axios.patch(`/api/tickets/${tickets[ticketIndex]._id}/done`);
+      getTickets();
+      // not re-rendering the component
+      // const tempList = tickets;
+      // setTickets(tempList);
+  }
+
   useEffect(() => {
     getTickets();
   }, []);
@@ -25,7 +35,7 @@ function App() {
   return (
     <div className = "container">
       <SearchInput getTickets = {getTickets}/>
-      <Ticket tickets = {tickets}/>
+      <Ticket tickets = {tickets} hideOnClick = {hideOnClick}/>
     </div>
   );
 }
