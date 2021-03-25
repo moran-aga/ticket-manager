@@ -6,8 +6,8 @@ function Ticket({ tickets, hideOnClick }) {
     const unDoneTickets = tickets.filter(ticket => !(ticket.done));
     return (
         <>
-            {unDoneTickets&&unDoneTickets.map(ticket => {
-                return <div className = "ticket">
+            {unDoneTickets&&unDoneTickets.map((ticket, index)=> {
+                return <div key = {`ticket-${index}`} className = "ticket">
                     <div className="ticket-title">{ticket.title}</div>        
                     <div className = "ticket-content">{ticket.content}</div>        
                     <div className ="userEmail">{ticket.userEmail}</div>        
