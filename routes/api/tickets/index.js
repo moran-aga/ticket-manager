@@ -14,17 +14,30 @@ tickets.get("/", (req, res) => {
   });
 });
 
-tickets.patch('/:ticketId', (req, res) => {
+tickets.patch('/:ticketId/done', (req, res) => {
     const { ticketId } = req.params;
     Ticket.findOne({ _id: ticketId })
     .then(result => {
-        const done = result.done;
-        result.updateOne({ done: !done })
+        result.updateOne({ done: true })
         .then(_ => {
             res.status(200).json({updated: true});
         })
     })
     .catch(err => res.status(500).json({error: err.message}))
+});
+
+tickets.patch('/:ticketId/undone', (req, res) => {
+    const { ticketId } = req.params;
+    Ticket.findOne({_id: ticketId})
+    .then(result => {
+        result.updateOne({done: false})
+        .then(_  => {
+            res.status(200).json({updated: true});
+        })
+    })
+    .catch(err => {
+        res.status(500).json({message: err.message});
+    }) 
 })
 
 module.exports = tickets;
