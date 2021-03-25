@@ -41,11 +41,12 @@ function App() {
   }
 
   const restoreOnClick = () => {
-    const restoredList = tickets.map(async (ticket) => {
+    const restoredList = tickets.map(ticket => {
       ticket.done = false;
       return ticket;
     });
     setTickets(restoredList);
+    setHiddenTickets([]);
   }
 
   useEffect(() => {
