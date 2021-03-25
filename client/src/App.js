@@ -13,10 +13,12 @@ function App() {
     if(searchWord === undefined){
       const { data } = await axios.get('/api/tickets?searchText');
       setTickets(data);
+      getHiddenTickets(data);
       return;
     }
     const { data } = await axios.get(`/api/tickets?searchText=${searchWord}`);
     setTickets(data);
+    getHiddenTickets(data);
   };
 
   const hideOnClick = async (e) => {
@@ -26,9 +28,15 @@ function App() {
       const tempList = [...tickets];
       tempList[ticketIndex].done = true;
       setTickets(tempList);
+      getHiddenTickets(tempList);
     } catch(e){
       console.log("ERROR" + e);
     }
+  }
+  
+  const getHiddenTickets = (data) => {
+    const temp = data.filter(ticket => ticket.done);
+    setHiddenTickets(temp);
   }
 
   useEffect(() => {
