@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ticket{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid black;
+}
+.ticket-title{
+    font-size: 25px;
+    font-weight: bold;
+}
+#searchInput{
+    width: 20rem;
+    height: 2rem;
+    font-size: 20px;
+    padding: 5px 5px 5px 10px;
+}
