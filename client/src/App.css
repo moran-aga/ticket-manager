@@ -1,3 +1,11 @@
+:root{
+    --bgColor: aliceblue;
+    --ticketColor: #eee5e0;
+    /* --ticketColor: #fffdf0; */
+}
+body{
+    background-color: var(--bgColor);
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -5,22 +13,37 @@
     align-items: center;
 }
 .ticket{
-    width: fit-content;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    /* flex-wrap: wrap; */
     margin: 5px;
-    padding: 10px;
-    border: 2px solid black;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: var(--ticketColor);
 }
 .ticket-title{
     font-size: 25px;
     font-weight: bold;
+    text-align: center;
+}
+.noDisplay{
+    display: none;
 }
 #searchInput{
     width: 20rem;
     height: 2rem;
     font-size: 20px;
     padding: 5px 5px 5px 10px;
+    border-radius: 9999px;
+}
+.btn{
+    border: none;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    width: 5rem;
+    height: 2rem;
 }
