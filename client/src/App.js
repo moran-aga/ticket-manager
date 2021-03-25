@@ -12,7 +12,7 @@ function App() {
 
   const getTickets = async (searchWord) => {
     if(searchWord === undefined){
-      const { data } = await axios.get('/api/tickets?searchText');
+      const { data } = await axios.get('/api/tickets?searchText=');
       setTickets(data);
       getHiddenTickets(data);
       return;
@@ -24,7 +24,7 @@ function App() {
 
   const hideOnClick = async (e) => {
     try{
-      const ticketTime = e.target.parentElement.parentElement.children[3].innerText;
+      const ticketTime = e.target.parentElement.children[0].innerText;
       const ticketIndex = tickets.findIndex(ticket => ticket.creationTime === Number(ticketTime));
       const tempList = [...tickets];
       tempList[ticketIndex].done = true;
