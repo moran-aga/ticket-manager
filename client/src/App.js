@@ -56,12 +56,17 @@ function App() {
  }, []);
 
  return (
-  <div className="container">
-   <SearchInput getTickets={getTickets} />
-   <RestoreButton onClick={restoreOnClick} />
-   <Counter hiddenTickets={hiddenTickets} tickets={tickets} />
-   <Ticket tickets={tickets} hideOnClick={hideOnClick} />
-  </div>
+    <>
+        <header className = "app-title">Ticket Manager:</header>
+        <div className="container">
+            <div className = "searchCounter">
+                <SearchInput getTickets={getTickets} />
+                <RestoreButton onClick={restoreOnClick} />
+            </div>
+            <Counter hiddenTickets={hiddenTickets} tickets={tickets} />
+            <Ticket tickets={tickets} hideOnClick={hideOnClick} />
+        </div>
+    </>
  );
 }
 
