@@ -31,6 +31,8 @@ body {
  padding: 20px;
  border-color: black 2px solid;
  border-radius: 50px;
+ word-wrap: break-word;
+ box-shadow: 0 0 8px rgb(73, 72, 72);
  background-color: var(--ticketColor);
 }
 .ticket-title {
@@ -44,7 +46,9 @@ body {
 
 .ticket-content {
  padding-bottom: 20px;
- font-size: 18px;
+ font-size: 17px;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .noDisplay {
  display: none;
@@ -77,6 +81,11 @@ body {
  position: absolute;
  top: 47px;
  right: 470px;
+}
+
+#searchResults {
+ font-family: cursive;
+ margin-top: 0;
 }
 
 .labels {
