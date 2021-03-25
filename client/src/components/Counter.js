@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 
 function Counter({ hiddenTickets }) {
-    return (
-        <div id = "hideTicketsCounter">
-            {`${hiddenTickets.length}`}
-        </div>
-    );
+ return (
+  <div id="hideTicketsCounter">Hidden Tickets: {`${hiddenTickets.length}`}</div>
+ );
 }
 
 export default Counter;
