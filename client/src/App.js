@@ -1,10 +1,10 @@
 import "./App.css";
 import Ticket from "./components/Ticket";
 import SearchInput from "./components/SearchInput";
-import Counter from "./components/Counter";
+import HiddenCounter from "./components/HiddenCounter";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import RestoreButton from "./components/RestoreButton";
+import SearchCounter from "./components/SearchCounter";
 
 function App() {
  const [tickets, setTickets] = useState([]);
@@ -59,11 +59,11 @@ function App() {
     <>
         <header className = "app-title">Ticket Manager:</header>
         <div className="container">
-            <div className = "searchCounter">
-                <SearchInput getTickets={getTickets} />
-                <RestoreButton onClick={restoreOnClick} />
+            <SearchInput getTickets={getTickets} />
+            <div className = "hiddenCounter">
+                <HiddenCounter hiddenTickets={hiddenTickets} onClick={restoreOnClick} />
             </div>
-            <Counter hiddenTickets={hiddenTickets} tickets={tickets} />
+            <SearchCounter tickets = {tickets} hiddenTickets = {hiddenTickets}/>
             <Ticket tickets={tickets} hideOnClick={hideOnClick} />
         </div>
     </>
