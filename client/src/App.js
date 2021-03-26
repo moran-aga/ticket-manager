@@ -4,10 +4,7 @@ import SearchInput from "./components/SearchInput";
 import HiddenCounter from "./components/HiddenCounter";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import NavBar from "./components/NavBar";
 import SearchCounter from "./components/SearchCounter";
-
-const navbarProps = ['Ticket Manager', 'sort', 'show hidden']
 
 function App() {
  const [tickets, setTickets] = useState([]);
@@ -15,7 +12,7 @@ function App() {
 
  const getTickets = async (searchWord) => {
   if (searchWord === undefined) {
-   const { data } = await axios.get("/api/tickets?searchText=");
+   const { data } = await axios.get("/api/tickets");
    setTickets(data);
    getHiddenTickets(data);
    return;
@@ -54,21 +51,12 @@ function App() {
   setHiddenTickets([]);
  };
 
- const sortOnClick = () => {
-    tickets.sort(function(a, b){
-        return b.creationTime - a.creationTime;
-    });
-    const sortedTickets = [...tickets];
-    setTickets(sortedTickets);
- }
-
  useEffect(() => {
   getTickets();
  }, []);
 
  return (
     <>
-        <NavBar navTitles = {navbarProps} onSortClick = {sortOnClick}/>
         <header className = "app-title">Ticket Manager:</header>
         <div className="container">
             <SearchInput getTickets={getTickets} />
