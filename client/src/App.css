@@ -6,7 +6,6 @@
 :root {
  --bgColor: rgba(233, 234, 241, 0.514);
  --ticketColor: #7f85bb;
- /* --ticketColor: #fffdf0; */
 }
 body {
  background-color: var(--bgColor);
@@ -17,6 +16,19 @@ body {
     font-family: cursive;
     text-align: center;
     padding: 30px 0;
+}
+.nav-bar{
+    display: flex;
+    font-size: 22px;
+    align-items: center;
+    background-color: var(--ticketColor);
+}
+.nav-bar li{
+    list-style: none;
+    padding: 5px;
+}
+.sortButton{
+    cursor: pointer;
 }
 .container {
  display: flex;
